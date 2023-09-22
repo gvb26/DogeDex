@@ -21,6 +21,9 @@ struct ContentView: View {
                     ForEach(vm.filteredDogs) { dog in
                         NavigationLink(destination: DogDetailView(dog: dog)) {
                             DogView(dog: dog)
+                                .onAppear() {
+                                    vm.loadMoreDogs(currentDog: dog)
+                                }
                         }
                     }
                 }
@@ -29,6 +32,8 @@ struct ContentView: View {
                 .navigationBarTitleDisplayMode(.inline)
             }
             .searchable(text: $vm.searchText)
+            .autocorrectionDisabled()
+            .textInputAutocapitalization(.words)
         }
         .environmentObject(vm)
     }

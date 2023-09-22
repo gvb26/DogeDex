@@ -14,8 +14,8 @@ class DogManager {
         return dogs
     }
 
-    func getDogs(limit: Int, _ completion:@escaping ([Dog]) -> ()) {
-        Bundle.main.fetchData(url: "https://api.thedogapi.com/v1/breeds?limit=\(limit)&page=0", model: [Dog].self) { data in
+    func getDogs(limit: Int, page: Int, _ completion:@escaping ([Dog]) -> ()) {
+        Bundle.main.fetchData(url: "https://api.thedogapi.com/v1/breeds?limit=\(limit)&page=\(page)", model: [Dog].self) { data in
             completion(data)
         } failure: { error in
             print(error)

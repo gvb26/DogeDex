@@ -21,6 +21,7 @@
 		7A0AABF72ABB3BBE009E0DF7 /* DogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0AABF62ABB3BBE009E0DF7 /* DogManager.swift */; };
 		7A0AABFA2ABB4E84009E0DF7 /* DogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0AABF92ABB4E84009E0DF7 /* DogDetailView.swift */; };
 		7A0AABFE2ABB5150009E0DF7 /* DogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0AABFD2ABB5150009E0DF7 /* DogView.swift */; };
+		7AF32BA12ABD01A500AEABAF /* DogExpandedCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF32BA02ABD01A500AEABAF /* DogExpandedCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		7A0AABF62ABB3BBE009E0DF7 /* DogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogManager.swift; sourceTree = "<group>"; };
 		7A0AABF92ABB4E84009E0DF7 /* DogDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogDetailView.swift; sourceTree = "<group>"; };
 		7A0AABFD2ABB5150009E0DF7 /* DogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogView.swift; sourceTree = "<group>"; };
+		7AF32BA02ABD01A500AEABAF /* DogExpandedCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogExpandedCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				7A0AABC12AB9F738009E0DF7 /* ContentView.swift */,
 				7A0AABF92ABB4E84009E0DF7 /* DogDetailView.swift */,
 				7A0AABFD2ABB5150009E0DF7 /* DogView.swift */,
+				7AF32BA02ABD01A500AEABAF /* DogExpandedCardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AF32BA12ABD01A500AEABAF /* DogExpandedCardView.swift in Sources */,
 				7A0AABF12ABA35B0009E0DF7 /* DogModel.swift in Sources */,
 				7A0AABC22AB9F738009E0DF7 /* ContentView.swift in Sources */,
 				7A0AABF42ABB3BA1009E0DF7 /* DogViewModel.swift in Sources */,

@@ -7,80 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8CFE8D19-3766-4A1E-AD3D-82981B55D04B"
+            uuid = "FB1D60A4-476D-401A-9EAF-660760F448D9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Helpers/Helpers.swift"
+            filePath = "ViewModel/DogViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "fetchData(url:model:completion:failure:)"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "loadMoreDogs(currentDog:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E7EE019C-C150-4E61-9771-388FF8F064C6"
+            uuid = "50FD7D50-D8FB-4701-9E60-071F5F6F60E9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Helpers/Helpers.swift"
+            filePath = "ViewModel/DogViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "fetchData(url:model:completion:failure:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "E7EE019C-C150-4E61-9771-388FF8F064C6 - 6d654bf3f85f9b6d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in __C.NSBundle.fetchData&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(url: Swift.String, model: &#x3c4;_0_0.Type, completion: (&#x3c4;_0_0) -&gt; (), failure: (Swift.Error) -&gt; ()) -&gt; ()"
-                  moduleName = "DogeDex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gaurangbham/DogeDex/DogeDex/Helpers/Helpers.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "331">
-               </Location>
-               <Location
-                  uuid = "E7EE019C-C150-4E61-9771-388FF8F064C6 - 6d654bf3f85f9b6d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in __C.NSBundle.fetchData&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(url: Swift.String, model: &#x3c4;_0_0.Type, completion: (&#x3c4;_0_0) -&gt; (), failure: (Swift.Error) -&gt; ()) -&gt; ()"
-                  moduleName = "DogeDex"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/gaurangbham/DogeDex/DogeDex/Helpers/Helpers.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "654">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5D8162C5-7A8D-4761-814C-B8F233F2908E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Helpers/Helpers.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "fetchData(url:model:completion:failure:)"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "loadMoreDogs(currentDog:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

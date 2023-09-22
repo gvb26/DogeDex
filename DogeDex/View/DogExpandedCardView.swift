@@ -1,26 +1,26 @@
 //
-//  DogView.swift
+//  DogExpandedCardView.swift
 //  DogeDex
 //
-//  Created by Gaurang Bham on 9/20/23.
+//  Created by Gaurang Bham on 9/21/23.
 //
 
 import SwiftUI
 
-struct DogView: View {
+struct DogExpandedCardView: View {
     @EnvironmentObject var vm: DogViewModel
     let dog: Dog
     let dimension: Double = 68
     var body: some View {
         ZStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .center) {
                 Text("\(dog.name.capitalized)")
                     .font(.headline).frame(width: 140, height: 50, alignment: .leading).minimumScaleFactor(0.75)
                     .foregroundColor(.white)
                     .padding(.top, 8)
                     .padding(.leading)
                 HStack {
-                    Text(dog.breedGroup ?? "Other")
+                    Text(dog.breedGroup ?? "Non-sporting")
                         .font(.subheadline).bold()
                         .foregroundColor(.white)
                         .padding(.vertical, 8)
@@ -35,7 +35,7 @@ struct DogView: View {
                             image
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: dimension, height: dimension)
+                                .frame(width: 250, height: 167)
                         }
                     } placeholder: {
                         ProgressView()
@@ -48,17 +48,18 @@ struct DogView: View {
                 
             }
         }
-        .background(BreedGroup(dog.breedGroup?.lowercased()).getBreedGroupColor())
+        .frame(width: 395, height: 300, alignment: .center)
+        .background(Color.green)
         .cornerRadius(12)
-        .shadow(color: BreedGroup(dog.breedGroup?.lowercased()).getBreedGroupColor(), radius: 6)
-        
+        .shadow(color: .green, radius: 6)
         
     }
 }
 
-struct DogView_Previews: PreviewProvider {
+struct DogExpandedCardView_Previews: PreviewProvider {
     static var previews: some View {
         DogView(dog: Dog.sampleDog)
             .environmentObject(DogViewModel())
     }
 }
+
