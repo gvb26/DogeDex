@@ -35,6 +35,7 @@ struct ContentView: View {
             .autocorrectionDisabled()
             .textInputAutocapitalization(.words)
         }
+        .accentColor(.white)
         .environmentObject(vm)
     }
 }
