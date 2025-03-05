@@ -12,8 +12,8 @@ struct ContentView: View {
     
     private let adaptiveColumns = [
         GridItem(.adaptive(minimum: 150))
-    
     ]
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -21,9 +21,22 @@ struct ContentView: View {
                     ForEach(vm.filteredDogs) { dog in
                         NavigationLink(destination: DogDetailView(dog: dog)) {
                             DogView(dog: dog)
-                                .onAppear() {
-                                    vm.loadMoreDogs(currentDog: dog)
+                                .onAppear {
+                                    if dog == vm.filteredDogs.last {
+                                        print("👀 Last visible dog: \(dog.name), checking for pagination")
+                                        vm.loadMoreDogs(currentDog: dog)
+                                    }
                                 }
+                        }
+                    }
+
+                    // ✅ Center ProgressView and remove it at last page
+                    if vm.page + 1 < vm.totalPages {
+                        HStack {
+                            Spacer() // ✅ Push to center
+                            ProgressView()
+                                .padding(.vertical, 20)
+                            Spacer() // ✅ Push to center
                         }
                     }
                 }

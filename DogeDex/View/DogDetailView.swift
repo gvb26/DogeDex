@@ -14,31 +14,45 @@ struct DogDetailView: View {
     
     var body: some View {
         ZStack {
-            BreedGroup(dog.breedGroup?.lowercased()).getBreedGroupColor()
-                .ignoresSafeArea()
             VStack {
                 VStack {
                     VStack {
                         Text("\(dog.name.capitalized)")
-                            .font(.headline).bold()
+                            .font(.system(size: 40)).bold()
                             .foregroundColor(.white)
-        //                    .padding(.top, 8)
-        //                    .padding(.leading)
+                            .padding(.top, 10)
                             .frame(width: 400, height: 24, alignment: .center)
-                        AsyncImage(url: URL(string: "https://cdn2.thedogapi.com/images/\(dog.referenceImageID ?? "rkiByec47").jpg")) { image in
-                            if let image = image {
+                        Text(dog.breedGroup.string())
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding(.vertical, 8)
+                            .padding(.horizontal, 16)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(BreedGroup(dog.breedGroup.string().lowercased()).getBreedGroupColor().opacity(0.25))
+                            )
+                            .frame(width: 400, height: 24, alignment: .center)
+                        AsyncImage(url: URL(string: "https://cdn2.thedogapi.com/images/\(dog.referenceImageID ?? "rkiByec47").jpg")) { phase in
+                            if let image = phase.image {
                                 image
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: 250, height: 167, alignment: .top)
+                            } else if phase.error != nil {
+                                // Display a placeholder when loading failed
+                                Image(uiImage: UIImage(named:"404_Dog")!)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 250, height: 167)
+                            } else {
+                                ProgressView()
+                                    .frame(width: 68, height: 68)
                             }
-                        } placeholder: {
-                            ProgressView()
-                                .frame(width: 68, height: 68)
                         }
                         .background(.thinMaterial)
                         .clipShape(RoundedRectangle(cornerRadius: 15))
                         .padding([.bottom, .trailing], 4)
+                        .padding(.bottom,-50)
                         
                     }
                     .frame(width: UIScreen.main.bounds.width, height: 500, alignment: .bottom)
@@ -50,50 +64,45 @@ struct DogDetailView: View {
                 
                 VStack {
                     VStack {
-                        Text(dog.breedGroup ?? "Other")
-                            .font(.headline)
-                            .foregroundColor(.black)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 16)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(BreedGroup(dog.breedGroup?.lowercased()).getBreedGroupColor().opacity(0.25))
-                            )
-                            .frame(width: 400, height: 24, alignment: .center)
-                            .padding(.top, 30)
                         HStack {
                             VStack {
-                                Text("\(dog.weight?.imperial ?? "N/A")lbs")
-                                    .font(.headline)
-                                    .foregroundColor(.black)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .fill(Color.white.opacity(0.25))
-                                    )
-                                    .frame(width: 120, height: 20, alignment: .center)
+                                if let weight = dog.weight?.imperial {
+                                    Text("\(weight)lbs")
+                                        .font(.headline)
+                                        .foregroundColor(.black)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 20)
+                                                .fill(Color.white.opacity(0.25))
+                                        )
+                                        .frame(width: 120, height: 20, alignment: .center)
+                                } else {
+                                    Text("N/A")
+                                        .font(.headline)
+                                        .foregroundColor(.black)
+                                        .frame(width: 120, height: 20, alignment: .center)
+                                }
                                 Text("Weight")
                                     .font(.subheadline)
                                     .foregroundColor(.black)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .fill(Color.white.opacity(0.25))
-                                    )
                                     .frame(width: 100, height: 12, alignment: .center)
                             }
                             VStack {
-                                Text("\(dog.height?.imperial ?? "N/A")in")
-                                    .font(.headline)
-                                    .foregroundColor(.black)
-                                    .frame(width: 120, height: 20, alignment: .center)
+                                if let height = dog.height?.imperial {
+                                    Text("\(height)in")
+                                        .font(.headline)
+                                        .foregroundColor(.black)
+                                        .frame(width: 120, height: 20, alignment: .center)
+                                } else {
+                                    Text("N/A")
+                                        .font(.headline)
+                                        .foregroundColor(.black)
+                                        .frame(width: 120, height: 20, alignment: .center)
+                                }
                                 Text("Height")
                                     .font(.subheadline)
                                     .foregroundColor(.black)
                                     .padding(.vertical, 8)
                                     .padding(.horizontal, 16)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .fill(Color.white.opacity(0.25))
-                                    )
                                     .frame(width: 100, height: 12, alignment: .center)
                             }
                             VStack {
@@ -104,10 +113,6 @@ struct DogDetailView: View {
                                 Text("LifeSpan")
                                     .font(.subheadline)
                                     .foregroundColor(.black)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .fill(Color.white.opacity(0.25))
-                                    )
                                     .frame(width: 100, height: 12, alignment: .center)
                             }
 
@@ -117,18 +122,10 @@ struct DogDetailView: View {
                                 Text("\(dog.bredFor ?? "N/A")")
                                     .font(.headline).minimumScaleFactor(0.7)
                                     .foregroundColor(.black)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .fill(Color.white.opacity(0.25))
-                                    )
                                     .frame(width: 150, height: 40, alignment: .center)
                                 Text("Purpose")
                                     .font(.subheadline)
                                     .foregroundColor(.black)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .fill(Color.white.opacity(0.25))
-                                    )
                                     .frame(width: 200, height: 12, alignment: .center)
                             }
                             VStack {
@@ -139,10 +136,6 @@ struct DogDetailView: View {
                                 Text("Temperament")
                                     .font(.subheadline)
                                     .foregroundColor(.black)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .fill(Color.white.opacity(0.25))
-                                    )
                                     .frame(width: 200, height: 12, alignment: .center)
                             }
 
@@ -151,18 +144,10 @@ struct DogDetailView: View {
                         Text("\(dog.origin ?? "N/A")")
                             .font(.headline).minimumScaleFactor(0.7)
                             .foregroundColor(.black)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.white.opacity(0.25))
-                            )
                             .frame(width: 150, height: 40, alignment: .center)
                         Text("Origin")
                             .font(.subheadline)
                             .foregroundColor(.black)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.white.opacity(0.25))
-                            )
                             .frame(width: 200, height: 12, alignment: .center)
                     }
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-200, alignment: .top)
@@ -170,11 +155,11 @@ struct DogDetailView: View {
                     .background(.white)
                     
                 }
-                .cornerRadius(20)
-                .padding()
+                .cornerRadius(25)
+                .padding(.vertical, 90)
             }
         }
-        .background(BreedGroup(dog.breedGroup?.lowercased()).getBreedGroupColor())
+        .background(BreedGroup(dog.breedGroup.string().lowercased()).getBreedGroupColor().gradient)
         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .top)
         .onAppear{
             vm.getBreedDetails(dog)

@@ -21,6 +21,7 @@
 		7A0AABF72ABB3BBE009E0DF7 /* DogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0AABF62ABB3BBE009E0DF7 /* DogManager.swift */; };
 		7A0AABFA2ABB4E84009E0DF7 /* DogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0AABF92ABB4E84009E0DF7 /* DogDetailView.swift */; };
 		7A0AABFE2ABB5150009E0DF7 /* DogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0AABFD2ABB5150009E0DF7 /* DogView.swift */; };
+		7A865D222BA2400D00FB2C94 /* 404_Dog.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A865D212BA2400D00FB2C94 /* 404_Dog.png */; };
 		7AF32BA12ABD01A500AEABAF /* DogExpandedCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF32BA02ABD01A500AEABAF /* DogExpandedCardView.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		7A0AABF62ABB3BBE009E0DF7 /* DogManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogManager.swift; sourceTree = "<group>"; };
 		7A0AABF92ABB4E84009E0DF7 /* DogDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogDetailView.swift; sourceTree = "<group>"; };
 		7A0AABFD2ABB5150009E0DF7 /* DogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogView.swift; sourceTree = "<group>"; };
+		7A865D212BA2400D00FB2C94 /* 404_Dog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 404_Dog.png; sourceTree = "<group>"; };
 		7AF32BA02ABD01A500AEABAF /* DogExpandedCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogExpandedCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +92,7 @@
 		7A0AABB32AB9F738009E0DF7 = {
 			isa = PBXGroup;
 			children = (
+				7A865D212BA2400D00FB2C94 /* 404_Dog.png */,
 				7A0AABF82ABB4E41009E0DF7 /* View */,
 				7A0AABF52ABB3BAB009E0DF7 /* Managers */,
 				7A0AABF22ABB3AC1009E0DF7 /* ViewModel */,
@@ -304,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A0AABC72AB9F73A009E0DF7 /* Preview Assets.xcassets in Resources */,
+				7A865D222BA2400D00FB2C94 /* 404_Dog.png in Resources */,
 				7A0AABC42AB9F73A009E0DF7 /* Assets.xcassets in Resources */,
 				7A0AABEB2ABA31BA009E0DF7 /* Dogs.json in Resources */,
 			);

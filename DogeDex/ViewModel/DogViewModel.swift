@@ -15,7 +15,7 @@ final class DogViewModel: ObservableObject {
     @Published var dogList = [Dog]()
     @Published var dog: Dog?
     @Published var searchText = ""
-    
+
     var filteredDogs: [Dog] {
         return searchText == "" ? dogList : dogList.filter { $0.name.lowercased().contains(searchText.lowercased()) }
     }
@@ -24,14 +24,23 @@ final class DogViewModel: ObservableObject {
     var page : Int = 0
     
     //MARK: - PAGINATION
-    func loadMoreDogs(currentDog: Dog){
-        print("Loading more dogs")
-        let thresholdIndex = self.dogList.endIndex - 1
-        if thresholdIndex == self.dogList.firstIndex(of: currentDog), (page + 1) <= totalPages {
-            page += 1
-            dogManager.getDogs(limit: 50, page: page) { data in
+    func loadMoreDogs(currentDog: Dog) {
+        guard (page + 1) < totalPages else {
+            print("🚨 Reached last page (\(totalPages)), stopping pagination")
+            return
+        }
+
+        if let lastDog = dogList.last, lastDog.id == currentDog.id {
+            page += 1  // ✅ Increment before calling API
+            
+            print("📢 Fetching page \(page) / \(totalPages)")
+
+            dogManager.getDogs(limit: 20, page: page) { newDogs, _ in
                 DispatchQueue.main.async {
-                    self.dogList.append(contentsOf: data)
+                    let uniqueDogs = newDogs.filter { !self.dogList.contains($0) } // Remove duplicates
+                    self.dogList.append(contentsOf: uniqueDogs)
+                    
+                    print("✅ Added \(uniqueDogs.count) new dogs, total count: \(self.dogList.count)")
                 }
             }
         }
@@ -41,11 +50,19 @@ final class DogViewModel: ObservableObject {
         return Int(Double(dog.id).rounded(to: 10.0, roundingRule: .down))
     }
     
+    func hasReachedEnd(of dog: Dog) -> Bool {
+        return filteredDogs.last?.id == dog.id
+        
+    }
     
     init() {
-        dogManager.getDogs(limit: 1000, page: 0) { data in
+        print("🔄 Initializing DogViewModel...")
+
+        dogManager.getDogs(limit: 20, page: 0) { data, calculatedTotalPages in
             DispatchQueue.main.async {
                 self.dogList = data
+                self.totalPages = calculatedTotalPages // ✅ Set dynamically
+                print("✅ Initial fetch complete. Total pages: \(self.totalPages), Dogs loaded: \(self.dogList.count)")
             }
         }
     }

@@ -67,7 +67,10 @@ enum BreedGroup: String {
     case other = "other"
     
     init(_ group: String?) {
-        switch group {
+        
+        let reformattedGroup = group?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+
+        switch reformattedGroup {
         case "herding":
             self = .herding
         case "terrier":
@@ -84,8 +87,33 @@ enum BreedGroup: String {
             self = .toy
         case "mixed":
             self = .mixed
+        case "", nil:
+            self = .other  // ✅ Explicitly handle empty strings and nil
         default:
             self = .other
+        }
+    }
+    
+    func string() -> String {
+        switch self {
+        case .herding:
+            return "Herding"
+        case .terrier:
+            return "Terrier"
+        case .working:
+            return "Working"
+        case .nonSporting:
+            return "Non-Sporting"
+        case .hound:
+            return "Hound"
+        case .sporting:
+            return "Sporting"
+        case .toy:
+            return "Toy"
+        case .mixed:
+            return "Mixed"
+        default:
+            return "Other"
         }
     }
     
@@ -111,16 +139,4 @@ enum BreedGroup: String {
             return Color.yellow
         }
     }
-}
-
-struct BreedGroupColor {
-    static let herding = Color.orange
-    static let terrier = Color.red
-    static let working = Color.black
-    static let nonSporting = Color.purple
-    static let hound = Color.brown
-    static let sporting = Color.blue
-    static let toy = Color.pink
-    static let mixed = Color.mint
-    static let other = Color.gray
 }

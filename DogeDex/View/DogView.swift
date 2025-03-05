@@ -20,7 +20,7 @@ struct DogView: View {
                     .padding(.top, 8)
                     .padding(.leading)
                 HStack {
-                    Text(dog.breedGroup ?? "Other")
+                    Text(dog.breedGroup.string())
                         .font(.subheadline).bold()
                         .foregroundColor(.white)
                         .padding(.vertical, 8)
@@ -30,17 +30,23 @@ struct DogView: View {
                                 .fill(Color.white.opacity(0.25))
                         )
                         .frame(width: 100, height: 24, alignment: .center).minimumScaleFactor(0.6)
-                    AsyncImage(url: URL(string: "https://cdn2.thedogapi.com/images/\(dog.referenceImageID ?? "rkiByec47").jpg")) { image in
-                        if let image = image {
+                    AsyncImage(url: URL(string: "https://cdn2.thedogapi.com/images/\(dog.referenceImageID ?? "rkiByec47").jpg")) { phase in
+                        if let image = phase.image {
                             image
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: dimension, height: dimension)
+                        } else if phase.error != nil {
+                            // Display a placeholder when loading failed
+                            Image(uiImage: UIImage(named:"404_Dog")!)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: dimension, height: dimension)
+                        } else {
+                            ProgressView()
+                                .frame(width: dimension, height: dimension)
                         }
-                    } placeholder: {
-                        ProgressView()
-                            .frame(width: dimension, height: dimension)
-                    }
+                    } 
                     .background(.thinMaterial)
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                     .padding([.bottom, .trailing], 4)
@@ -48,9 +54,9 @@ struct DogView: View {
                 
             }
         }
-        .background(BreedGroup(dog.breedGroup?.lowercased()).getBreedGroupColor())
+        .background(BreedGroup(dog.breedGroup.string().lowercased()).getBreedGroupColor())
         .cornerRadius(12)
-        .shadow(color: BreedGroup(dog.breedGroup?.lowercased()).getBreedGroupColor(), radius: 6)
+        .shadow(color: BreedGroup(dog.breedGroup.string().lowercased()).getBreedGroupColor(), radius: 6)
         
         
     }

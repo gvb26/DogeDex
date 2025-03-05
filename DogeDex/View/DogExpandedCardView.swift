@@ -20,7 +20,7 @@ struct DogExpandedCardView: View {
                     .padding(.top, 8)
                     .padding(.leading)
                 HStack {
-                    Text(dog.breedGroup ?? "Non-sporting")
+                    Text(dog.breedGroup.string())
                         .font(.subheadline).bold()
                         .foregroundColor(.white)
                         .padding(.vertical, 8)
@@ -31,12 +31,10 @@ struct DogExpandedCardView: View {
                         )
                         .frame(width: 100, height: 24, alignment: .center).minimumScaleFactor(0.6)
                     AsyncImage(url: URL(string: "https://cdn2.thedogapi.com/images/\(dog.referenceImageID ?? "rkiByec47").jpg")) { image in
-                        if let image = image {
-                            image
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 250, height: 167)
-                        }
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 250, height: 167)
                     } placeholder: {
                         ProgressView()
                             .frame(width: dimension, height: dimension)
