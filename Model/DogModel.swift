@@ -77,18 +77,18 @@ struct Dog: Codable, Identifiable, Equatable {
     
     // ✅ Sample Dog for Testing
     static var sampleDog = Dog(
-        weight: nil,
-        height: nil,
+        weight: unit(imperial: "12", metric: "2"),
+        height: unit(imperial: "12", metric: "2"),
         id: 1,
         name: "Corgo",
-        bredFor: nil,
+        bredFor: "Eating",
         breedGroupRaw: "",
-        lifeSpan: nil,
-        temperament: nil,
-        origin: nil,
+        lifeSpan: "2 min",
+        temperament: "Shiesty",
+        origin: "Burma",
         referenceImageID: nil,
-        countryCode: nil,
-        description: nil,
+        countryCode: "nil",
+        description: "This a sample doge",
         history: nil
     )
 }
